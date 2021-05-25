@@ -10,83 +10,67 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const DATA = [
-  {
-    id: '01',
-    title: 'CALCULAR',
-  },
-  {
-    id: '02',
-    title: 'CADASTRAR',
-  },
-  {
-    id: '03',
-    title: 'ITENS \nCADASTRADOS',
-  },
-  {
-    id: '04',
-    title: 'SAIR',
-  },
-];
+export default function Menu({navigation}){
+  return(
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.menu}>MENU</Text>
+      <View style={styles.part1}>
+        <TouchableOpacity onPress={() => navigation.navigate('Calcular')}>
+        <Text style={styles.item}>CALCULAR</Text>
+        </TouchableOpacity>
 
+        <TouchableOpacity onPress={() => navigation.navigate('ItensCadastrados')}>
+        <Text style={styles.item}>ITENS CADASTRADOS</Text>
+        </TouchableOpacity> 
+      </View>
 
-const Item = ({title}) => (
-  <View style={styles.item}>
-    <TouchableOpacity>
-    <Text style={styles.title}>{title}</Text>
-    </TouchableOpacity>
-  </View>
-);
+      <View style={styles.part2}>
+        <TouchableOpacity onPress={() => navigation.navigate('Cadastrar')}>
+        <Text style={styles.item}>CADASTRAR   ITENS</Text>
+        </TouchableOpacity> 
 
-export default function Menu(){
-  const renderItem = ({item}) => <Item title={item.title} />;
-  return (
-    <View style={styles.container}>
-
-      <Text style={styles.space}>
-          MENU
-      </Text>
-      <FlatList
-        data={DATA}
-        numColumns={2}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
+        <TouchableOpacity onPress={() => navigation.navigate('Sair')}>
+        <Text style={styles.item}>SAIR</Text>
+        </TouchableOpacity>
+        
+      </View>
+    </SafeAreaView>  
+  )
+    
 };
 
+
+
 const styles = StyleSheet.create({
-  space: {
-    flex:1,
-    backgroundColor: '#D2D3D3',
-    justifyContent: 'center',
+  container: {
+    flex: 1,
+    backgroundColor: '#969DB0',
+  },
+  menu: {
     fontSize: 50,
+    textAlign: "center",
+    marginVertical: 25,
+    textDecorationLine: "underline"
+  },
+  item: {
+    backgroundColor: '#fff',
+    marginVertical: 30,
+    marginHorizontal: 15,
+    borderRadius: 5,
+    height: 170,
+    width: 170,
+    fontSize: 17,
+    textAlignVertical: "center",
     textAlign: "center",
     fontWeight: "bold",
   },
 
-  container: {
-    flex:3,
-    backgroundColor: '#D2D3D3',
-    justifyContent: 'center',
+  part1: {
+    flexDirection: "row",
 
-  },
- 
-  item: {
-    backgroundColor: '#fff',
-    marginVertical: 20,
-    marginHorizontal: 13,
-    borderRadius: 5,
-    height: 170,
-    width: 170,
-    justifyContent: "space-around",
-    
-  },
-  title: {
-   fontSize: 17,
-   textAlign: "center",
-   fontWeight: "bold",
+},
+  part2: {
+    flexDirection: "row",
 
 },
 });

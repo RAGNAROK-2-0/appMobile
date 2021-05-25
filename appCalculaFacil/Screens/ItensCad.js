@@ -7,6 +7,7 @@ import {
   StatusBar,
   SafeAreaView,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 
 const DATA = [
@@ -39,11 +40,13 @@ const DATA = [
 
 const Item = ({title}) => (
   <View style={styles.item}>
+    <TouchableOpacity>
     <Text style={styles.title}>{title}</Text>
+    </TouchableOpacity>
   </View>
 );
 
-export default function ItensCad(){
+export default function ItensCad({navigation}){
   const renderItem = ({item}) => <Item title={item.title} />;
   return (
     <View style={styles.container}>
