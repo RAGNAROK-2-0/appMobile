@@ -17,9 +17,12 @@ import {
 
 
 
-export default function Calcular({navigation}){
+export default function AddCustoFixo({navigation}){
+    const [descricao, setDescricao] = React.useState(null);
+    const [valor, setValor] = React.useState(null);
+    const [unidadeMed, setUnidadeMed] = React.useState(null);
     const [quantidade, setQuantidade] = React.useState(null);
-    const [item, setItem] = React.useState(null);
+    const [item, setItem] = React.useState("null");
 
     function Salvar(){
         return(
@@ -38,38 +41,42 @@ export default function Calcular({navigation}){
             <Text style={styles.title}>Selecione o Item:</Text>
             <Picker
  
-            style={{height: 100, width: 200, marginHorizontal: 80}}
+            style={{height: 100, width: 200, marginHorizontal: 50}}
             selectedValue={item}
             onValueChange={(itemValue, itemIndex) => setItem(itemValue)}>
                 <Picker.Item label="Brigadeiro" value='1'/>
                 <Picker.Item label="Torta" value='2'/>
                 <Picker.Item label="Pastel" value='3'/>
             </Picker>
-            <Text style={styles.titles}></Text>
-            <Text style={styles.titles }>Quantidade a ser produzida:</Text>
+            <Text style={styles.titles}>Descrição do Custo:</Text>
+            <TextInput
+            style={styles.inputs}
+            keyboardType="default"
+            onChangeText={(val) => setDescricao(val)}
+            />
+
+            <Text style={styles.titles}>Valor do Custo:</Text>
+            <TextInput
+            style={styles.inputs}
+            keyboardType="numeric"
+            onChangeText={(val) => setValor(val)}
+            />
+
+            <Text style={styles.titles }>Unidade de Medida:</Text>
+            <TextInput
+            style={styles.inputs}
+            onChangeText={(val) => setUnidadeMed(val)}
+            />
+
+            <Text style={styles.titles }>Quantidade:</Text>
             <TextInput
             style={styles.inputs}
             keyboardType="numeric"
             onChangeText={(val) => setQuantidade(val)}
             />
-
-            <Text style={styles.titles}></Text>
-            <Text style={styles.titles}>Porcentagem de lucro:</Text>
-            <Picker
- 
-            style={{height: 100, width: 200, marginHorizontal: 80}}
-            selectedValue={item}
-            onValueChange={(itemValue, itemIndex) => setItem(itemValue)}>
-                <Picker.Item label="10%" value='1.1'/>
-                <Picker.Item label="20%" value='1.2'/>
-                <Picker.Item label="30%" value='1.3'/>
-                <Picker.Item label="40%" value='1.4'/>
-                <Picker.Item label="50%" value='1.5'/>
-            </Picker>
-
             <TouchableOpacity onPress={(Salvar)}>
-                <Text style={styles.botao}>Calcular</Text>
-            </TouchableOpacity>
+                    <Text style={styles.botao}>Salvar</Text>
+                </TouchableOpacity>
 
 
             </ScrollView>

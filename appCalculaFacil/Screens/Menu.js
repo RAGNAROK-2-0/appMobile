@@ -8,9 +8,25 @@ import {
   SafeAreaView,
   Button,
   TouchableOpacity,
+  Alert,
+  BackHandler,
 } from 'react-native';
 
+
 export default function Menu({navigation}){
+
+  function GetOut(){
+    return(
+      Alert.alert("Atenção!", "Deseja realmente sair?", [
+        {
+          text: "Não",
+          onPress: () => navigation.navigate('Menu'),
+        },
+        { text: "Sim", onPress: () => BackHandler.exitApp() }
+      ])
+  )
+  }
+
   return(
     <SafeAreaView style={styles.container}>
       <Text style={styles.menu}>MENU</Text>
@@ -26,10 +42,10 @@ export default function Menu({navigation}){
 
       <View style={styles.part2}>
         <TouchableOpacity onPress={() => navigation.navigate('Cadastrar')}>
-        <Text style={styles.item}>CADASTRAR   ITENS</Text>
+        <Text style={styles.item}>ADICIONAR ITENS E CUSTOS</Text>
         </TouchableOpacity> 
 
-        <TouchableOpacity onPress={() => navigation.navigate('Sair')}>
+        <TouchableOpacity onPress={(GetOut)}>
         <Text style={styles.item}>SAIR</Text>
         </TouchableOpacity>
         

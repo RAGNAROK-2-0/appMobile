@@ -51,6 +51,7 @@ export default function ItensCad({navigation}){
   return (
     <View style={styles.container}>
       
+      <Text style={styles.head}></Text>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -66,14 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#D2D3D3',
   },
   head:{
-    flex: 0.3,
-    backgroundColor: '#969DB0',
-    fontSize: 22,
-    fontWeight: "bold",
-   
-    padding: 15,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    marginVertical: 10,
   },
  
   item: {
@@ -81,6 +75,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 8,
     marginHorizontal: 16,
+    borderRadius: 5,
   },
   title: {
     fontSize: 22,
