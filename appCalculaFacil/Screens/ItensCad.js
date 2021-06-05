@@ -42,7 +42,7 @@ const DATA = [
 export default function ItensCad({navigation}) {
 
   const [DATA, setDATA] = React.useState([])
-  const [loading, setloading] = useState(false)
+
   
 
   const Item = ({title,dadoDoItem}) => (
